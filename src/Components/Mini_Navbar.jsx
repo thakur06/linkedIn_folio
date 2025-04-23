@@ -4,7 +4,7 @@ export const Mini_Navbar = () => {
   return (
     <div className="flex  mt-3 w-full flex-row justify-evenly md:gap-4  mb-10">
           <Link
-            to="about"
+            to=""
             className="px-4 py-2  text-white rounded-lg hover:scale-150 hover:transition-all hover:ease-in-out transition-colors duration-200 animate-fade-in"
             style={{ animationDelay: '0.1s' }}
           >

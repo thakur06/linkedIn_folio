@@ -6,6 +6,7 @@ import About from './Pages/About';
 import { Projects } from './Pages/Projects';
 import Navbar from './Components/Navbar';
 import bg_image from "./assets/icons/half_character.png"
+import { Contact } from './Pages/Contact';
 // Layout component with static Navbar and Outlet
 function Layout() {
   return (
@@ -20,7 +21,7 @@ function Layout() {
           {/* Main Content */}
           <div className="max-h-screen overflow-y-scroll scrollbar-hide relative z-10">
             <Navbar />
-            <div className="pt-14 md:px-6 max-w-3xl mx-auto">
+            <div className="mt-26 md:px-6 max-w-3xl mx-auto">
               <Outlet />
               <Footer />
             </div>
@@ -44,14 +45,7 @@ function Services() {
 }
 
 
-function Contact() {
-  return (
-    <div className="text-center py-10 animate-fade-in">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">Get in Touch</h1>
-      <p className="text-lg text-gray-600">Contact me for collaboration or inquiries.</p>
-    </div>
-  );
-}
+
 
 // Router configuration
 const router = createBrowserRouter([
@@ -62,8 +56,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
         children: [
-          { path: '', element: <div className="text-center py-10 animate-fade-in"><p className="text-lg text-gray-600">Select a section above to explore.</p></div> },
-          { path: 'about', element: <About /> },
+          { path: '', element: <About /> },
           { path: 'services', element: <Services /> },
           { path: 'projects', element: <Projects /> },
           { path: 'contact', element: <Contact /> },

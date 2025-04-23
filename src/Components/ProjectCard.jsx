@@ -4,7 +4,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 
-export function Projects() {
+export function ExpandableCardDemo() {
   const [active, setActive] = useState(null);
   const ref = useRef(null);
   const id = useId();
@@ -36,12 +36,12 @@ export function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full mt-10 w-full z-10" />
+            className="fixed inset-0 bg-black/20 h-[10%] w-full z-10" />
         )}
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 mt-14 md:mt-5 grid place-items-center z-[100]">
+          <div className="fixed inset-0 h-10 grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -64,7 +64,7 @@ export function Projects() {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden">
+              className="w-full max-w-[500px]  h-[90%] md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden">
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img
                   width={200}
@@ -188,125 +188,110 @@ export const CloseIcon = () => {
 };
 
 const cards = [
-    {
-      description: "Lana Del Rey",
-      title: "Summertime Sadness",
-      src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
+  {
+    description: "Lana Del Rey",
+    title: "Summertime Sadness",
+    src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
+    ctaText: "Play",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
         <p>Lana Del Rey, an iconic American singer-songwriter, is celebrated for
-          her melancholic and cinematic music style...
-        </p>
-      ),
+                    her melancholic and cinematic music style. Born Elizabeth Woolridge
+                    Grant in New York City, she has captivated audiences worldwide with
+                    her haunting voice and introspective lyrics. <br /> <br />Her songs
+                    often explore themes of tragic romance, glamour, and melancholia,
+                    drawing inspiration from both contemporary and vintage pop culture.
+                    With a career that has seen numerous critically acclaimed albums, Lana
+                    Del Rey has established herself as a unique and influential figure in
+                    the music industry, earning a dedicated fan base and numerous
+                    accolades.
+                  </p>
+      );
     },
-    {
-      description: "Babbu Maan",
-      title: "Mitran Di Chhatri",
-      src: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
+  },
+  {
+    description: "Babbu Maan",
+    title: "Mitran Di Chhatri",
+    src: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
+    ctaText: "Play",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
         <p>Babu Maan, a legendary Punjabi singer, is renowned for his soulful
-          voice and profound lyrics...
-        </p>
-      ),
+                    voice and profound lyrics that resonate deeply with his audience. Born
+                    in the village of Khant Maanpur in Punjab, India, he has become a
+                    cultural icon in the Punjabi music industry. <br /> <br />His songs
+                    often reflect the struggles and triumphs of everyday life, capturing
+                    the essence of Punjabi culture and traditions. With a career spanning
+                    over two decades, Babu Maan has released numerous hit albums and
+                    singles that have garnered him a massive fan following both in India
+                    and abroad.
+                  </p>
+      );
     },
-    {
-      description: "Metallica",
-      title: "For Whom The Bell Tolls",
-      src: "https://assets.aceternity.com/demos/metallica.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
+  },
+
+  {
+    description: "Metallica",
+    title: "For Whom The Bell Tolls",
+    src: "https://assets.aceternity.com/demos/metallica.jpeg",
+    ctaText: "Play",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
         <p>Metallica, an iconic American heavy metal band, is renowned for their
-          powerful sound and intense performances...
-        </p>
-      ),
+                    powerful sound and intense performances that resonate deeply with
+                    their audience. Formed in Los Angeles, California, they have become a
+                    cultural icon in the heavy metal music industry. <br /> <br />Their
+                    songs often reflect themes of aggression, social issues, and personal
+                    struggles, capturing the essence of the heavy metal genre. With a
+                    career spanning over four decades, Metallica has released numerous hit
+                    albums and singles that have garnered them a massive fan following
+                    both in the United States and abroad.
+                  </p>
+      );
     },
-    {
-      description: "Led Zeppelin",
-      title: "Stairway To Heaven",
-      src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
+  },
+  {
+    description: "Led Zeppelin",
+    title: "Stairway To Heaven",
+    src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
+    ctaText: "Play",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
         <p>Led Zeppelin, a legendary British rock band, is renowned for their
-          innovative sound and profound impact...
-        </p>
-      ),
+                    innovative sound and profound impact on the music industry. Formed in
+                    London in 1968, they have become a cultural icon in the rock music
+                    world. <br /> <br />Their songs often reflect a blend of blues, hard
+                    rock, and folk music, capturing the essence of the 1970s rock era.
+                    With a career spanning over a decade, Led Zeppelin has released
+                    numerous hit albums and singles that have garnered them a massive fan
+                    following both in the United Kingdom and abroad.
+                  </p>
+      );
     },
-    {
-      description: "Mustafa Zahid",
-      title: "Toh Phir Aao",
-      src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
+  },
+  {
+    description: "Mustafa Zahid",
+    title: "Toh Phir Aao",
+    src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
+    ctaText: "Play",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
         <p>"Aawarapan", a Bollywood movie starring Emraan Hashmi, is
-          renowned for its intense storyline...
-        </p>
-      ),
+                    renowned for its intense storyline and powerful performances. Directed
+                    by Mohit Suri, the film has become a significant work in the Indian
+                    film industry. <br /> <br />The movie explores themes of love,
+                    redemption, and sacrifice, capturing the essence of human emotions and
+                    relationships. With a gripping narrative and memorable music,
+                    "Aawarapan" has garnered a massive fan following both in
+                    India and abroad, solidifying Emraan Hashmi's status as a
+                    versatile actor.
+                  </p>
+      );
     },
-    {
-      description: "Taylor Swift",
-      title: "Blank Space",
-      src: "https://assets.aceternity.com/demos/taylor-swift.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
-        <p>Taylor Swift, known for her narrative songwriting and versatility,
-          has made a remarkable impact on global pop and country music...
-        </p>
-      ),
-    },
-    {
-      description: "Adele",
-      title: "Someone Like You",
-      src: "https://assets.aceternity.com/demos/adele.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
-        <p>Adele, the soulful British singer-songwriter, is renowned for her
-          emotional ballads and powerful vocals...
-        </p>
-      ),
-    },
-    {
-      description: "Arijit Singh",
-      title: "Tum Hi Ho",
-      src: "https://assets.aceternity.com/demos/arijit-singh.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
-        <p>Arijit Singh, one of India’s most beloved playback singers, has
-          touched millions with his heart-melting voice...
-        </p>
-      ),
-    },
-    {
-      description: "Imagine Dragons",
-      title: "Radioactive",
-      src: "https://assets.aceternity.com/demos/imagine-dragons.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
-        <p>Imagine Dragons blends rock, pop, and electronic influences to
-          create energetic and emotional hits like "Radioactive"...
-        </p>
-      ),
-    },
-    {
-      description: "Shreya Ghoshal",
-      title: "Sun Raha Hai",
-      src: "https://assets.aceternity.com/demos/shreya-ghoshal.jpeg",
-      ctaText: "Play",
-      ctaLink: "https://ui.aceternity.com/templates",
-      content: () => (
-        <p>Shreya Ghoshal, one of the finest voices in Indian cinema, brings
-          grace, emotion, and technical brilliance to every song...
-        </p>
-      ),
-    },
-  ];
-  
+  },
+];

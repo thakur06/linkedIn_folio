@@ -25,7 +25,7 @@ export default function Home() {
       </div>
 <Mini_Navbar/>
 <div
-  className="animate-fade-in relative  pt-10"
+  className="animate-fade-in relative  pt-10 "
   
 >
   <Outlet />
