@@ -12,7 +12,7 @@ export default function Home() {
   <Hero/>
     <div className="relative min-h-screen  flex flex-col items-center overflow-hidden">
       {/* <JaggedPath className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-[600px] sm:max-w-[800px] opacity-20" /> */}
-      <div className="relative z-10  px-4 sm:px-6 max-w-7xl mx-auto py-16 animate-fade-in">
+      <div className="relative z-10  px-1 sm:px-6 max-w-7xl mx-auto py-16 animate-fade-in">
       <h1 className='text-3xl font-semibold'>Abhishek Thakur</h1>
       <p>Brings ideas to life with code! ✨</p>
       <p className='text-wrap'>Senior Web Engineer. Creative Developer. Content Creator. Whimsical Specialist. International Speaker. Ex-Google.</p>
