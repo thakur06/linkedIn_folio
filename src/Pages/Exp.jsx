@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { IconBriefcase, IconCalendar, IconDownload, IconUmbrella } from "@tabler/icons-react";
 import biogaseng from "../assets/company/Biogaseng.png"
-import Oneshield from "../assets/company/OneShield.png"
+import Oneshield from "../assets/company/Oneshield.png"
 const Exp = () => {
   const [expandedId, setExpandedId] = useState(null);
   const [animatedIds, setAnimatedIds] = useState([]);
