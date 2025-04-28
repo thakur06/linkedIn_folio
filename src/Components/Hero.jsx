@@ -1,6 +1,7 @@
 import React from 'react';
 import heromp4 from "../assets/videos/earth.mp4"
 import Particles from './Particles';
+import logo from "../assets/icons/logo.png"
 export const Hero = () => {
   return (
     <div className="relative w-full ">
@@ -30,8 +31,8 @@ export const Hero = () => {
   />
 </div>
       {/* Circle slightly overlapping from bottom */}
-      <div className="absolute bottom-[-3rem] md:left-25 left-16 transform -translate-x-1/2 z-10 md:h-30 md:w-30 h-20 w-20 bg-white rounded-full shadow-lg flex items-center justify-center">
-        <img className='rounded-full md:h-28 md:w-28 h-18 w-18 object-cover' src='https://img.freepik.com/free-photo/young-attractive-man-looking-suprised-isolated-red_155003-11739.jpg'/>
+      <div className="absolute bottom-[-3rem] md:left-25 left-16 transform -translate-x-1/2 z-10 md:h-30 md:w-30 h-20 w-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-125 transition-all ease-in-out">
+        <img className='rounded-full md:h-28 md:w-28 h-18 w-18 object-cover' src={logo}/>
       </div>
       
     </div>

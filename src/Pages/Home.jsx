@@ -10,7 +10,7 @@ import bg_image from "../assets/icons/half_character.png"
 export default function Home() {
   return (<>
   <Hero/>
-    <div className="relative min-h-screen  flex flex-col items-center overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center overflow-hidden">
       {/* <JaggedPath className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-[600px] sm:max-w-[800px] opacity-20" /> */}
       <div className="relative z-10  px-1 sm:px-6 max-w-7xl mx-auto py-16 animate-fade-in">
       <h1 className='text-3xl font-semibold'>Abhishek Thakur</h1>
@@ -25,7 +25,7 @@ export default function Home() {
       </div>
 <Mini_Navbar/>
 <div
-  className="animate-fade-in relative p-5 "
+  className="animate-fade-in relative p-5  "
   
 >
   <Outlet />

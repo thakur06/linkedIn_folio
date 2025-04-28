@@ -170,13 +170,13 @@ const Exp = () => {
               </div>
               
               <div 
-                className="expandable-content mt-4 ml-[76px] overflow-hidden"
+                className="expandable-content mt-4 md:ml-[76px] overflow-hidden"
                 style={{
                   maxHeight: expandedId === exp.id ? "500px" : "0",
                   opacity: expandedId === exp.id ? 1 : 0
                 }}
               >
-                <ul className="pl-5 list-disc">
+                <ul className="md:pl-5 list-disc">
                   {exp.description.map((item, index) => (
                     <li 
                       key={index} 
