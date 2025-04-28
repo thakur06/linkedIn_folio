@@ -66,7 +66,7 @@ setemailSuccess("");
       <h2 className="font-extrabold text-xl dark:text-[#291c3a] ">
       Contact me
       </h2>
-      <form className="my-8 p-5" ref={form} onSubmit={sendEmail}>
+      <form className="my-8 " ref={form} onSubmit={sendEmail}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>

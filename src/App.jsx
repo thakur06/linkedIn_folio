@@ -7,6 +7,7 @@ import { Projects } from './Pages/Projects';
 import Navbar from './Components/Navbar';
 import bg_image from "./assets/icons/half_character.png"
 import { Contact } from './Pages/Contact';
+import { Exp } from './Pages/Exp';
 // Layout component with static Navbar and Outlet
 function Layout() {
   return (
@@ -35,14 +36,7 @@ function Layout() {
 // Placeholder route components
 
 
-function Services() {
-  return (
-    <div className="text-center py-10 animate-fade-in">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">My Services</h1>
-      <p className="text-lg text-gray-600">Explore the services I offer.</p>
-    </div>
-  );
-}
+
 
 
 
@@ -57,7 +51,7 @@ const router = createBrowserRouter([
         element: <Home />,
         children: [
           { path: '', element: <About /> },
-          { path: 'services', element: <Services /> },
+          { path: 'exp', element: <Exp/> },
           { path: 'projects', element: <Projects /> },
           { path: 'contact', element: <Contact /> },
         ],

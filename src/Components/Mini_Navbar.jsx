@@ -12,7 +12,7 @@ export const Mini_Navbar = () => {
         About
       </Link>
       <Link
-        to="services"
+        to="exp"
         className="px-2 sm:px-4 py-1 sm:py-2 text-white text-xs sm:text-sm rounded-lg hover:bg-orange-500 transition-colors duration-200 animate-fade-in text-center"
         style={{ animationDelay: '0.2s' }}
       >
