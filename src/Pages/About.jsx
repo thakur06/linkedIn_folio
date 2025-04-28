@@ -52,9 +52,9 @@ export default function About() {
         `}
       </style>
       
-      <div className="max-w-2xl w-full space-y-5">
+      <div className="min-w-full w-full space-y-5">
         <h1 
-          className={`text-4xl sm:text-5xl font-bold text-[#c4ff41] font-['Shojumaru',cursive] tracking-tight ${
+          className={`text-4xl sm:text-5xl font-bold text-[#66d1f3] font-['Shojumaru',cursive] tracking-tight ${
             isVisible ? "animate-slideInFromLeft" : "opacity-0"
           }`}
           style={{ animation: isVisible ? "slideInFromLeft 0.7s ease-out forwards" : "none" }}
@@ -63,12 +63,12 @@ export default function About() {
         </h1>
         
         <p 
-          className={`text-lg sm:text-xl text-gray-300 leading-relaxed  p-6 rounded-lg shadow-lg  ${
+          className={`text-lg sm:text-xl text-gray-300 leading-relaxed  md:p-6 p-2 rounded-lg shadow-lg  ${
             isVisible ? "animate-fadeIn" : "opacity-0"
           }`}
           style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.3s forwards" : "none" }}
         >
-          As a frontend developer, I specialize in crafting intuitive and responsive user interfaces. My expertise in <span className="text-[#c4ff41] font-semibold">React.js</span>, <span className="text-[#c4ff41] font-semibold">Tailwind CSS</span>, and <span className="text-[#c4ff41] font-semibold">JavaScript</span> allows me to translate complex design specifications into seamless, high-performance web experiences. I focus on optimizing performance, ensuring cross-device compatibility, and maintaining clean, modular code. My passion for design and meticulous attention to detail drive me to create interfaces that are both visually stunning and functionally robust.
+          As a frontend developer, I specialize in crafting intuitive and responsive user interfaces. My expertise in <span className="text-[#66d1f3] font-semibold">React.js</span>, <span className="text-[#66d1f3] font-semibold">Tailwind CSS</span>, and <span className="text-[#66d1f3] font-semibold">JavaScript</span> allows me to translate complex design specifications into seamless, high-performance web experiences. I focus on optimizing performance, ensuring cross-device compatibility, and maintaining clean, modular code. My passion for design and meticulous attention to detail drive me to create interfaces that are both visually stunning and functionally robust.
         </p>
         
         <h2 

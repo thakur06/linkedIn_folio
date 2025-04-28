@@ -22,7 +22,7 @@ function Layout() {
           {/* Main Content */}
           <div className="max-h-screen overflow-y-scroll scrollbar-hide relative z-10">
             <Navbar />
-            <div className="mt-26  mx-auto">
+            <div className="mt-26 md:px-6 max-w-5xl mx-auto">
               <Outlet />
               <Footer />
             </div>

@@ -4,11 +4,6 @@ import { Util } from "../libs/utils";
 import { Label } from "../Components/Label";
 import Input from "../Components/Input";
 import emailjs from "@emailjs/browser";
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
 
 export function Contact() {
   const form = useRef();
@@ -19,10 +14,8 @@ export function Contact() {
   const [emailSuccess, setEmailSuccess] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
-  // Trigger animations on mount
   useEffect(() => {
     setIsVisible(true);
-    // Cleanup success message timeout on unmount
     const timeout = setTimeout(() => setEmailSuccess(""), 4000);
     return () => clearTimeout(timeout);
   }, []);
@@ -62,60 +55,40 @@ export function Contact() {
   };
 
   return (
-    <section className=" flex items-center justify-center text-white">
+    <div className="flex min-w-full w-full items-center justify-center bg-white text-white p-4">
       <style>
         {`
           @keyframes slideInFromLeft {
-            0% {
-              transform: translateX(-50px);
-              -webkit-transform: translateX(-50px);
-              opacity: 0;
-            }
-            100% {
-              transform: translateX(0);
-              -webkit-transform: translateX(0);
-              opacity: 1;
-            }
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
           }
 
           @keyframes fadeIn {
-            0% {
-              opacity: 0;
-              transform: translateY(20px);
-              -webkit-transform: translateY(20px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-              -webkit-transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
           }
 
           .input-focus {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
           }
 
           .input-focus:focus {
             transform: scale(1.02);
-            -webkit-transform: scale(1.02);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
           }
 
           .button-hover {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
           }
 
           .button-hover:hover {
             transform: scale(1.05);
-            -webkit-transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
           }
         `}
       </style>
 
-      <div className="max-w-md w-full text-center text-white mx-auto  rounded-2xl shadow-lg ">
+      <div className="w-full sm:max-w-2xl text-center text-white bg-red-400 rounded-2xl shadow-lg p-8">
         <h2 
           className={`text-3xl sm:text-4xl font-extrabold text-[#c4ff41] font-['Shojumaru',cursive] mb-8 ${
             isVisible ? "animate-slideInFromLeft" : "opacity-0"
@@ -125,7 +98,7 @@ export function Contact() {
           Contact Me
         </h2>
 
-        <form className="space-y-6" ref={form} onSubmit={sendEmail}>
+        <form className="space-y-6 w-full" ref={form} onSubmit={sendEmail}>
           <div 
             className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${
               isVisible ? "animate-fadeIn" : "opacity-0"
@@ -144,15 +117,16 @@ export function Contact() {
                 className="input-focus"
               />
             </LabelInputContainer>
+
             <LabelInputContainer>
-              <Label htmlFor="lastname" className="text-white">Last Name</Label>
+              <Label htmlFor="lastname">Last Name</Label>
               <Input
                 id="lastname"
                 func={setLname}
                 value={lname}
                 placeholder="Rajput"
                 type="text"
-                className="input-focus "
+                className="input-focus"
               />
             </LabelInputContainer>
           </div>
@@ -183,7 +157,7 @@ export function Contact() {
           >
             <Label htmlFor="message">Message</Label>
             <textarea
-              className="w-full h-24 border-none bg-[#E1EBED] text-[#291c3a] rounded-md px-4 py-3 text-sm placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 dark:shadow-[0px_0px_1px_1px_var(--neutral-700)] input-focus resize-none"
+              className="w-full h-24 border-none bg-[#E1EBED] text-[#291c3a] rounded-md px-4 py-3 text-sm placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 input-focus resize-none"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               id="message"
@@ -193,7 +167,7 @@ export function Contact() {
           </LabelInputContainer>
 
           <button
-            className={`w-full h-12 text-white font-medium rounded-md bg-[#291c3a] button-hover ${
+            className={`relative w-full h-12 text-white font-medium rounded-md bg-[#291c3a] button-hover overflow-hidden ${
               isVisible ? "animate-fadeIn" : "opacity-0"
             }`}
             style={{ animation: isVisible ? "fadeIn 0.7s ease-out 1.2s forwards" : "none" }}
@@ -205,7 +179,7 @@ export function Contact() {
 
           {emailSuccess && (
             <div 
-              className={`font-bold text-rose-400 animate-fadeIn`}
+              className="font-bold text-rose-400"
               style={{ animation: "fadeIn 0.5s ease-out 1.5s forwards" }}
             >
               {emailSuccess}
@@ -213,7 +187,7 @@ export function Contact() {
           )}
         </form>
       </div>
-    </section>
+    </div>
   );
 }
 

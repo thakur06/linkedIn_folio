@@ -113,7 +113,7 @@ const Exp = () => {
         <h2 className="text-4xl font-bold text-center mb-12 font-['Shojumaru',cursive] relative">
           <span className="relative inline-block">
             EXPERIENCE
-            <span className="absolute h-1 w-full bg-blue-500 bottom-[-8px] left-0 transform scale-x-100 origin-left transition-transform duration-500"></span>
+            <span className="absolute h-1 w-full bg-[#66d1f3] bottom-[-8px] left-0 transform scale-x-100 origin-left transition-transform duration-500"></span>
           </span>
         </h2>
         
@@ -121,11 +121,11 @@ const Exp = () => {
           {experiences.map((exp, expIndex) => (
             <div 
               key={exp.id} 
-              className={`border border-gray-200 rounded-lg p-6 shadow-md ${animatedIds.includes(exp.id) ? "slide-in" : ""}`}
+              className={`rounded-lg p-6 shadow-md ${animatedIds.includes(exp.id) ? "slide-in" : ""}`}
             >
               <div className="flex justify-between items-start">
                 <div className="flex gap-4 items-start">
-                  <div className="company-logo w-[60px] h-[60px] rounded-full overflow-hidden flex-shrink-0 border border-gray-200  p-1">
+                  <div className="company-logo w-[100px] h-[100px] rounded-full overflow-hidden flex-shrink-0   p-1">
                     <img 
                       src={exp.logo} 
                       alt={`${exp.company} logo`}
@@ -142,7 +142,7 @@ const Exp = () => {
                       <span className="font-semibold">{exp.company}</span>
                     </div>
                     <div className="flex items-center mt-1 text-gray-600">
-                      <IconCalendar size={14} className="mr-2" />
+                      <IconCalendar size={20} className="mr-2" />
                       <span>{exp.period} | {exp.location}</span>
                     </div>
                   </div>

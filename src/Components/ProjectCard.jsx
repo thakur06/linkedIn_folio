@@ -7,9 +7,15 @@ import { useOutsideClick } from "../hooks/useOutsideClick";
 export function ProjectCard() {
   const [active, setActive] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isVisible, setIsVisible] = useState(false); // Added isVisible state
   const projectsPerPage = 5;
   const ref = useRef(null);
   const id = useId();
+
+  // Trigger animations on mount
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   // Pagination logic
   const totalProjects = cards.length;
@@ -49,7 +55,7 @@ export function ProjectCard() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className="flex justify-center md:min-w-4xl  px-4 sm:px-6 lg:px-8 bg-gray-900">
       <style>
         {`
           @keyframes slideInFromLeft {
@@ -102,173 +108,183 @@ export function ProjectCard() {
         `}
       </style>
 
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-[#c4ff41] font-['Shojumaru',cursive] mb-12 animate-slideInFromLeft">
-        Projects
-      </h2>
+      <div className=" w-full space-y-8">
+        <h2
+          className={`text-4xl sm:text-5xl font-extrabold text-[#c4ff41] font-['Shojumaru',cursive] mb-12 ${
+            isVisible ? "animate-slideInFromLeft" : "opacity-0"
+          }`}
+          style={{ animation: isVisible ? "slideInFromLeft 0.7s ease-out forwards" : "none" }}
+        >
+          Projects
+        </h2>
 
-      <div className="w-full max-w-2xl">
-        <AnimatePresence mode="wait">
-          <motion.ul
-            key={currentPage}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="grid gap-4"
-          >
-            {currentProjects.map((card, index) => (
-              <motion.div
-                layoutId={`card-${card.title}-${id}`}
-                key={`card-${card.title}-${id}`}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: index * 0.1 }}
-                onClick={() => setActive(card)}
-                className="p-4 flex flex-col md:flex-row justify-between items-center bg-gray-800 hover:bg-gray-700 rounded-xl cursor-pointer card-hover"
-              >
-                <div className="flex gap-4 flex-col md:flex-row">
-                  <motion.div layoutId={`image-${card.title}-${id}`}>
-                    <img
-                      width={100}
-                      height={100}
-                      src={card.src}
-                      alt={card.title}
-                      className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
-                    />
-                  </motion.div>
-                  <div>
-                    <motion.h3
-                      layoutId={`title-${card.title}-${id}`}
-                      className="font-medium text-[#c4ff41] text-center md:text-left"
-                    >
-                      {card.title}
-                    </motion.h3>
-                    <motion.p
-                      layoutId={`description-${card.description}-${id}`}
-                      className="text-gray-400 text-center md:text-left"
-                    >
-                      {card.description}
-                    </motion.p>
-                  </div>
-                </div>
-                <motion.button
-                  layoutId={`button-${card.title}-${id}`}
-                  className="px-4 py-2 text-sm rounded-full font-bold bg-gray-600 text-white hover:bg-green-500 mt-4 md:mt-0 button-hover"
+        <div className="w-full">
+          <AnimatePresence mode="wait">
+            <motion.ul
+              key={currentPage}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="grid gap-4 w-full"
+            >
+              {currentProjects.map((card, index) => (
+                <motion.div
+                  layoutId={`card-${card.title}-${id}`}
+                  key={`card-${card.title}-${id}`}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, delay: index * 0.1 }}
+                  onClick={() => setActive(card)}
+                  className="p-4 flex flex-col md:flex-row justify-between items-center bg-gray-800 hover:bg-gray-700 rounded-xl cursor-pointer card-hover"
                 >
-                  {card.ctaText}
-                </motion.button>
-              </motion.div>
-            ))}
-          </motion.ul>
-        </AnimatePresence>
+                  <div className="flex gap-4 flex-col md:flex-row">
+                    <motion.div layoutId={`image-${card.title}-${id}`}>
+                      <img
+                        width={100}
+                        height={100}
+                        src={card.src}
+                        alt={card.title}
+                        className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
+                      />
+                    </motion.div>
+                    <div>
+                      <motion.h3
+                        layoutId={`title-${card.title}-${id}`}
+                        className="font-medium text-[#c4ff41] text-center md:text-left"
+                      >
+                        {card.title}
+                      </motion.h3>
+                      <motion.p
+                        layoutId={`description-${card.description}-${id}`}
+                        className="text-gray-400 text-center md:text-left"
+                      >
+                        {card.description}
+                      </motion.p>
+                    </div>
+                  </div>
+                  <motion.button
+                    layoutId={`button-${card.title}-${id}`}
+                    className="px-4 py-2 text-sm rounded-full font-bold bg-gray-600 text-white hover:bg-green-500 mt-4 md:mt-0 button-hover"
+                  >
+                    {card.ctaText}
+                  </motion.button>
+                </motion.div>
+              ))}
+            </motion.ul>
+          </AnimatePresence>
 
-        {/* Pagination Controls */}
-        <div className="flex justify-center items-center gap-4 mt-8">
-          <button
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-full font-medium text-white ${
-              currentPage === 1 ? "bg-gray-600 cursor-not-allowed" : "bg-[#291c3a] button-hover"
-            } animate-fadeIn`}
-            style={{ animation: "fadeIn 0.7s ease-out 0.3s forwards" }}
-          >
-            Previous
-          </button>
-          <span className="text-gray-200 font-medium animate-fadeIn" style={{ animation: "fadeIn 0.7s ease-out 0.6s forwards" }}>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-full font-medium text-white ${
-              currentPage === totalPages ? "bg-gray-600 cursor-not-allowed" : "bg-[#291c3a] button-hover"
-            } animate-fadeIn`}
-            style={{ animation: "fadeIn 0.7s ease-out 0.9s forwards" }}
-          >
-            Next
-          </button>
+          {/* Pagination Controls */}
+          <div className="flex justify-center items-center gap-4 mt-8">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-full font-medium text-white ${
+                currentPage === 1 ? "bg-gray-600 cursor-not-allowed" : "bg-[#291c3a] button-hover"
+              } ${isVisible ? "animate-fadeIn" : "opacity-0"}`}
+              style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.3s forwards" : "none" }}
+            >
+              Previous
+            </button>
+            <span
+              className={`text-gray-200 font-medium ${isVisible ? "animate-fadeIn" : "opacity-0"}`}
+              style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.6s forwards" : "none" }}
+            >
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-full font-medium text-white ${
+                currentPage === totalPages ? "bg-gray-600 cursor-not-allowed" : "bg-[#291c3a] button-hover"
+              } ${isVisible ? "animate-fadeIn" : "opacity-0"}`}
+              style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.9s forwards" : "none" }}
+            >
+              Next
+            </button>
+          </div>
         </div>
-      </div>
 
-      <AnimatePresence>
-        {active && typeof active === "object" && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full mt-10 w-full z-10"
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {active && typeof active === "object" ? (
-          <div className="fixed inset-0 mt-14 md:mt-5 grid place-items-center z-[100]">
-            <motion.button
-              key={`button-${active.title}-${id}`}
-              layout
+        <AnimatePresence>
+          {active && typeof active === "object" && (
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className="flex absolute top-5 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
-              onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
-            <motion.div
-              layoutId={`card-${active.title}-${id}`}
-              ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-gray-800 sm:rounded-3xl overflow-hidden"
-            >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
-                <img
-                  width={200}
-                  height={200}
-                  src={active.src}
-                  alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
-                />
-              </motion.div>
-              <div>
-                <div className="flex justify-between items-start p-4">
-                  <div>
-                    <motion.h3
-                      layoutId={`title-${active.title}-${id}`}
-                      className="font-bold text-[#c4ff41]"
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/20 h-full mt-10 w-full z-10"
+            />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {active && typeof active === "object" ? (
+            <div className="fixed inset-0 mt-14 md:mt-5 grid place-items-center z-[100]">
+              <motion.button
+                key={`button-${active.title}-${id}`}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 0.05 } }}
+                className="flex absolute top-5 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+                onClick={() => setActive(null)}
+              >
+                <CloseIcon />
+              </motion.button>
+              <motion.div
+                layoutId={`card-${active.title}-${id}`}
+                ref={ref}
+                className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-gray-800 sm:rounded-3xl overflow-hidden"
+              >
+                <motion.div layoutId={`image-${active.title}-${id}`}>
+                  <img
+                    width={200}
+                    height={200}
+                    src={active.src}
+                    alt={active.title}
+                    className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                  />
+                </motion.div>
+                <div>
+                  <div className="flex justify-between items-start p-4">
+                    <div>
+                      <motion.h3
+                        layoutId={`title-${active.title}-${id}`}
+                        className="font-bold text-[#c4ff41]"
+                      >
+                        {active.title}
+                      </motion.h3>
+                      <motion.p
+                        layoutId={`description-${active.description}-${id}`}
+                        className="text-gray-400"
+                      >
+                        {active.description}
+                      </motion.p>
+                    </div>
+                    <motion.a
+                      layoutId={`button-${active.title}-${id}`}
+                      href={active.ctaLink}
+                      target="_blank"
+                      className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white button-hover"
                     >
-                      {active.title}
-                    </motion.h3>
-                    <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-gray-400"
-                    >
-                      {active.description}
-                    </motion.p>
+                      {active.ctaText}
+                    </motion.a>
                   </div>
-                  <motion.a
-                    layoutId={`button-${active.title}-${id}`}
-                    href={active.ctaLink}
-                    target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white button-hover"
-                  >
-                    {active.ctaText}
-                  </motion.a>
+                  <div className="pt-4 relative px-4">
+                    <motion.div
+                      layout
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="text-gray-400 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                    >
+                      {typeof active.content === "function" ? active.content() : active.content}
+                    </motion.div>
+                  </div>
                 </div>
-                <div className="pt-4 relative px-4">
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-gray-400 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
-                  >
-                    {typeof active.content === "function" ? active.content() : active.content}
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ) : null}
-      </AnimatePresence>
+              </motion.div>
+            </div>
+          ) : null}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
