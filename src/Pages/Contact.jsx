@@ -55,32 +55,27 @@ export function Contact() {
   };
 
   return (
-    <div className="flex min-w-full w-full items-center justify-center bg-white text-white p-4">
+    <div className="flex w-full   text-white py-12 p-5">
       <style>
         {`
           @keyframes slideInFromLeft {
             0% { transform: translateX(-50px); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
           }
-
           @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
           }
-
           .input-focus {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
           }
-
           .input-focus:focus {
             transform: scale(1.02);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
           }
-
           .button-hover {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
           }
-
           .button-hover:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -88,22 +83,22 @@ export function Contact() {
         `}
       </style>
 
-      <div className="w-full sm:max-w-2xl text-center text-white bg-red-400 rounded-2xl shadow-lg p-8">
-        <h2 
-          className={`text-3xl sm:text-4xl font-extrabold text-[#c4ff41] font-['Shojumaru',cursive] mb-8 ${
-            isVisible ? "animate-slideInFromLeft" : "opacity-0"
-          }`}
-          style={{ animation: isVisible ? "slideInFromLeft 0.7s ease-out forwards" : "none" }}
-        >
-          Contact Me
+      <div className="w-full space-y-6 text-center text-white ">
+      <h2 className="text-4xl font-bold text-center mt-[-3rem] md:mt-0 font-['Shojumaru',cursive] relative">
+          <span className="relative inline-block">
+            EXPERIENCE
+            <span className="absolute h-1 w-full bg-[#66d1f3] bottom-[-8px] left-0 transform scale-x-100 origin-left transition-transform duration-500"></span>
+          </span>
         </h2>
 
-        <form className="space-y-6 w-full" ref={form} onSubmit={sendEmail}>
-          <div 
-            className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${
+        <form className="space-y-6 w-full md:p-10 p-5 " ref={form} onSubmit={sendEmail}>
+          <div
+            className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 gap-3 ${
               isVisible ? "animate-fadeIn" : "opacity-0"
             }`}
-            style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.3s forwards" : "none" }}
+            style={{
+              animation: isVisible ? "fadeIn 0.7s ease-out 0.3s forwards" : "none",
+            }}
           >
             <LabelInputContainer>
               <Label htmlFor="firstname">First Name</Label>
@@ -131,11 +126,13 @@ export function Contact() {
             </LabelInputContainer>
           </div>
 
-          <LabelInputContainer 
-            className={`mb-4 ${
+          <LabelInputContainer
+            className={`${
               isVisible ? "animate-fadeIn" : "opacity-0"
             }`}
-            style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.6s forwards" : "none" }}
+            style={{
+              animation: isVisible ? "fadeIn 0.7s ease-out 0.6s forwards" : "none",
+            }}
           >
             <Label htmlFor="email">Email Address</Label>
             <Input
@@ -149,11 +146,13 @@ export function Contact() {
             />
           </LabelInputContainer>
 
-          <LabelInputContainer 
-            className={`mb-4 ${
+          <LabelInputContainer
+            className={`${
               isVisible ? "animate-fadeIn" : "opacity-0"
             }`}
-            style={{ animation: isVisible ? "fadeIn 0.7s ease-out 0.9s forwards" : "none" }}
+            style={{
+              animation: isVisible ? "fadeIn 0.7s ease-out 0.9s forwards" : "none",
+            }}
           >
             <Label htmlFor="message">Message</Label>
             <textarea
@@ -167,10 +166,12 @@ export function Contact() {
           </LabelInputContainer>
 
           <button
-            className={`relative w-full h-12 text-white font-medium rounded-md bg-[#291c3a] button-hover overflow-hidden ${
+            className={`relative  p-4 text-center pb-3 h-12 text-white font-medium rounded-md bg-[#63b9f7] button-hover overflow-hidden ${
               isVisible ? "animate-fadeIn" : "opacity-0"
             }`}
-            style={{ animation: isVisible ? "fadeIn 0.7s ease-out 1.2s forwards" : "none" }}
+            style={{
+              animation: isVisible ? "fadeIn 0.7s ease-out 1.2s forwards" : "none",
+            }}
             type="submit"
           >
             Send →
@@ -178,9 +179,11 @@ export function Contact() {
           </button>
 
           {emailSuccess && (
-            <div 
+            <div
               className="font-bold text-rose-400"
-              style={{ animation: "fadeIn 0.5s ease-out 1.5s forwards" }}
+              style={{
+                animation: "fadeIn 0.5s ease-out 1.5s forwards",
+              }}
             >
               {emailSuccess}
             </div>

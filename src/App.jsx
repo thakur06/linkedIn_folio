@@ -22,7 +22,7 @@ function Layout() {
           {/* Main Content */}
           <div className="max-h-screen overflow-y-scroll scrollbar-hide relative z-10">
             <Navbar />
-            <div className="mt-26 md:px-6 max-w-5xl mx-auto">
+            <div className="mt-26 md:px-6 max-w-3xl mx-auto bg-transparent">
               <Outlet />
               <Footer />
             </div>
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
           { path: '', element: <About /> },
           { path: 'exp', element: <Exp/> },
           { path: 'projects', element: <Projects /> },
-          { path: 'contact', element: <Contact /> },
+          { path: 'contact', element: <Contact/> },
         ],
       },
     ],

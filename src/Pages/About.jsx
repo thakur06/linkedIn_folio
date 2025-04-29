@@ -10,7 +10,7 @@ export default function About() {
   }, []);
 
   return (
-    <section className=" flex  justify-center ">
+    <section className=" flex  justify-center p-2 ">
       <style>
         {`
           @keyframes slideInFromLeft {

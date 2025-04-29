@@ -3,7 +3,10 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../hooks/useOutsideClick";
-
+import Calender from "../assets/Project/Calender.png"
+import Tic from "../assets/Project/Tic.png"
+import Shopvilla from "../assets/Project/shopVilla.png"
+import Portal from "../assets/Project/Portal.png"
 export function ProjectCard() {
   const [active, setActive] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +58,7 @@ export function ProjectCard() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section className="flex justify-center md:min-w-4xl  px-4 sm:px-6 lg:px-8 bg-gray-900">
+    <section className="flex justify-center min-w-full  px-4 sm:px-6 lg:px-8">
       <style>
         {`
           @keyframes slideInFromLeft {
@@ -110,10 +113,10 @@ export function ProjectCard() {
 
       <div className=" w-full space-y-8">
         <h2
-          className={`text-4xl sm:text-5xl font-extrabold text-[#c4ff41] font-['Shojumaru',cursive] mb-12 ${
+          className={`text-4xl sm:text-5xl font-extrabold text-center text-[#27a3e0] font-['Shojumaru',cursive] mb-12 ${
             isVisible ? "animate-slideInFromLeft" : "opacity-0"
           }`}
-          style={{ animation: isVisible ? "slideInFromLeft 0.7s ease-out forwards" : "none" }}
+          
         >
           Projects
         </h2>
@@ -136,16 +139,15 @@ export function ProjectCard() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, delay: index * 0.1 }}
                   onClick={() => setActive(card)}
-                  className="p-4 flex flex-col md:flex-row justify-between items-center bg-gray-800 hover:bg-gray-700 rounded-xl cursor-pointer card-hover"
+                  className="p-4 flex flex-col md:flex-row justify-between items-center  hover:bg-gray-700 rounded-xl cursor-pointer card-hover"
                 >
                   <div className="flex gap-4 flex-col md:flex-row">
                     <motion.div layoutId={`image-${card.title}-${id}`}>
                       <img
-                        width={100}
-                        height={100}
+                       
                         src={card.src}
                         alt={card.title}
-                        className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
+                        className="h-40 w-full md:h-14 md:w-14 rounded-lg object-cover object-top"
                       />
                     </motion.div>
                     <div>
@@ -211,7 +213,7 @@ export function ProjectCard() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/20 h-full mt-10 w-full z-10"
+              className="fixed inset-0 bg-black/20  mt-10 w-full z-10"
             />
           )}
         </AnimatePresence>
@@ -232,12 +234,11 @@ export function ProjectCard() {
               <motion.div
                 layoutId={`card-${active.title}-${id}`}
                 ref={ref}
-                className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-gray-800 sm:rounded-3xl overflow-hidden"
+                className="w-full max-w-[500px]  md:h-fit md:max-h-[90%] flex flex-col bg-gray-800 sm:rounded-3xl overflow-hidden"
               >
                 <motion.div layoutId={`image-${active.title}-${id}`}>
                   <img
-                    width={200}
-                    height={200}
+                  
                     src={active.src}
                     alt={active.title}
                     className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
@@ -317,7 +318,7 @@ const cards = [
   {
     description: "Lana Del Rey",
     title: "Summertime Sadness",
-    src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
+    src:Calender,
     ctaText: "Play",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => (
@@ -329,7 +330,7 @@ const cards = [
   {
     description: "Babbu Maan",
     title: "Mitran Di Chhatri",
-    src: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
+    src: Tic,
     ctaText: "Play",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => (
@@ -341,7 +342,7 @@ const cards = [
   {
     description: "Metallica",
     title: "For Whom The Bell Tolls",
-    src: "https://assets.aceternity.com/demos/metallica.jpeg",
+    src: Shopvilla,
     ctaText: "Play",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => (
@@ -353,7 +354,7 @@ const cards = [
   {
     description: "Led Zeppelin",
     title: "Stairway To Heaven",
-    src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
+    src: Portal,
     ctaText: "Play",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => (
@@ -362,76 +363,6 @@ const cards = [
       </p>
     ),
   },
-  {
-    description: "Mustafa Zahid",
-    title: "Toh Phir Aao",
-    src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => (
-      <p>
-        "Aawarapan", a Bollywood movie starring Emraan Hashmi, is renowned for its intense storyline...
-      </p>
-    ),
-  },
-  {
-    description: "Taylor Swift",
-    title: "Blank Space",
-    src: "https://assets.aceternity.com/demos/taylor-swift.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => (
-      <p>
-        Taylor Swift, known for her narrative songwriting and versatility, has made a remarkable impact on global pop and country music...
-      </p>
-    ),
-  },
-  {
-    description: "Adele",
-    title: "Someone Like You",
-    src: "https://assets.aceternity.com/demos/adele.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => (
-      <p>
-        Adele, the soulful British singer-songwriter, is renowned for her emotional ballads and powerful vocals...
-      </p>
-    ),
-  },
-  {
-    description: "Arijit Singh",
-    title: "Tum Hi Ho",
-    src: "https://assets.aceternity.com/demos/arijit-singh.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => (
-      <p>
-        Arijit Singh, one of India’s most beloved playback singers, has touched millions with his heart-melting voice...
-      </p>
-    ),
-  },
-  {
-    description: "Imagine Dragons",
-    title: "Radioactive",
-    src: "https://assets.aceternity.com/demos/imagine-dragons.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => (
-      <p>
-        Imagine Dragons blends rock, pop, and electronic influences to create energetic and emotional hits like "Radioactive"...
-      </p>
-    ),
-  },
-  {
-    description: "Shreya Ghoshal",
-    title: "Sun Raha Hai",
-    src: "https://assets.aceternity.com/demos/shreya-ghoshal.jpeg",
-    ctaText: "Play",
-    ctaLink: "https://ui.aceternity.com/templates",
-    content: () => (
-      <p>
-        Shreya Ghoshal, one of the finest voices in Indian cinema, brings grace, emotion, and technical brilliance to every song...
-      </p>
-    ),
-  },
+  
+
 ];
